@@ -14,6 +14,8 @@
     h2 { margin-top:34px; }
     .subtitle { max-width:980px; color:var(--muted); font-size:1.08rem; line-height:1.55; }
     .notice { background:#fff7ed; border-left:5px solid #f97316; padding:14px 16px; margin:20px 0; }
+    .walkthrough { background:#f8fafc; border:1px solid var(--line); border-radius:8px; padding:20px; margin:24px 0; }
+    .walkthrough ol { margin:0; padding-left:22px; line-height:1.65; }
     .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px; }
     .metric { background:var(--panel); border:1px solid var(--line); padding:18px; border-radius:8px; }
     .metric b { display:block; font-size:1.9rem; color:var(--accent); }
@@ -32,7 +34,20 @@
   <p class='subtitle'>A public, FAIR screening-to-biology dashboard integrating qHTS-style assay evidence, psoriasis omics, proteomics validation, protein AI features, structural context, and grounded evidence cards.</p>
 </header>
 <main>
-  <div class='notice'>Director-level caveat: this is a public-data-shaped demo. ROR gamma qHTS is pathway-proximal and small-molecule based; it is not a direct IL-17 peptide screen or efficacy model.</div>
+  <div class='notice'><strong>Interpretation note:</strong> this is a public-data-shaped demo for screening-to-biology prioritization. The ROR gamma qHTS layer is relevant to upstream Th17 / IL-17 biology, but it should be read as pathway-proximal screening evidence, not as a direct IL-17 peptide screen or efficacy model.</div>
+  <section class='walkthrough'>
+    <h2>Analysis Walkthrough</h2>
+    <ol>
+      <li><strong>Start with screening evidence:</strong> use public ROR gamma qHTS and counterscreen-style data as the HTS layer for upstream Th17 biology.</li>
+      <li><strong>Filter artifacts:</strong> combine primary activity, counterscreen behavior, selectivity, and artifact flags into a screen QC score.</li>
+      <li><strong>Add disease relevance:</strong> overlay psoriasis transcriptomic evidence so screening hits are not interpreted outside disease context.</li>
+      <li><strong>Validate at protein level:</strong> add proteomics support and explicitly flag RNA/protein discordance.</li>
+      <li><strong>Localize the biology:</strong> use single-cell context to distinguish T-cell, keratinocyte, myeloid, or broad inflammatory signals.</li>
+      <li><strong>Add AI/structure context:</strong> treat protein model and structure features as interpretive support, not proof of mechanism.</li>
+      <li><strong>Make the decision auditable:</strong> generate a transparent ranking and evidence cards with limitations and next validation experiments.</li>
+    </ol>
+    <p>Full technical walkthrough: <a href='https://github.com/Caffeinated-Code/HTS_IL17_Psoriasis/blob/main/docs/analysis_walkthrough.md'>analysis_walkthrough.md</a> in the repository docs.</p>
+  </section>
   <section class='grid'>
     <div class='metric'><b>5</b> demo candidates ranked</div>
     <div class='metric'><b>IL17A</b> top integrated score</div>

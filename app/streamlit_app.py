@@ -34,10 +34,23 @@ rankings = read_table(
 cards = read_table("evidence_cards.tsv", DEMO_DATA / "evidence_cards.tsv")
 
 st.warning(
-    "Demo caveat: ROR gamma qHTS is pathway-proximal and small-molecule based. "
-    "This app demonstrates workflow thinking, not direct peptide efficacy. "
+    "Interpretation note: ROR gamma qHTS is pathway-proximal evidence for upstream Th17 / IL-17 biology, "
+    "not a direct IL-17 peptide screen or efficacy model. "
     "Run `nextflow run main.nf -profile test` to regenerate the primary app tables."
 )
+
+with st.expander("Analysis walkthrough", expanded=True):
+    st.markdown(
+        """
+1. Start with public qHTS-style screening evidence around ROR gamma / Th17 biology.
+2. Penalize assay artifacts using counterscreen selectivity.
+3. Add psoriasis transcriptomics to test disease relevance.
+4. Add proteomics to check whether RNA-supported candidates have protein-level support.
+5. Add single-cell context to localize the signal to relevant immune or skin-cell compartments.
+6. Add protein AI and structure features as supporting interpretation layers.
+7. Generate grounded evidence cards that explain the ranking, limitations, and next validation experiment.
+"""
+    )
 
 score_cols = [
     "screen_qc_score",

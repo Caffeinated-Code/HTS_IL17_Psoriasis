@@ -66,6 +66,20 @@ flowchart LR
     N --> O["HTML report and Streamlit app"]
 ```
 
+## Analysis Walkthrough
+
+The dashboard and workflow should be read as a prioritization exercise, not an efficacy claim:
+
+1. Start with public qHTS-style screening evidence around ROR gamma / Th17 biology.
+2. Penalize assay artifacts using counterscreen logic.
+3. Add psoriasis disease transcriptomics to check tissue relevance.
+4. Add proteomics to test whether RNA-supported candidates also have protein-level support.
+5. Add single-cell context to identify relevant immune or skin-cell compartments.
+6. Add protein AI and structure features as supporting interpretation layers.
+7. Generate grounded evidence cards that explain the ranking, limitations, and next experiment.
+
+Full walkthrough: [docs/analysis_walkthrough.md](docs/analysis_walkthrough.md).
+
 ## Outputs
 
 - `results/tables/candidate_rankings.tsv`
@@ -94,7 +108,7 @@ The demo ships with small cached toy tables shaped like the public sources below
 
 ## Director-Level Caveats
 
-- ROR gamma qHTS is pathway-proximal, not a direct IL-17 peptide screen.
+- ROR gamma qHTS is pathway-proximal: it is relevant to Th17 / IL-17 biology but is not a direct IL-17 peptide screen.
 - Public screening data are small-molecule assays, used here as an HTS data analog.
 - Protein language model features are descriptive unless validated in a predictive task.
 - AlphaFold or ESMFold confidence supports structural plausibility, not binding proof.
