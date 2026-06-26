@@ -1,0 +1,6 @@
+gene_symbol	uniprot_id	embedding_model	embedding_cluster	protein_ai_score	model_note
+RORC	P51449	ESM-2-demo	cluster_th17_regulators	0.76	Demo score represents sequence-model feature context, not a validated prediction.
+IL17A	Q16552	ESM-2-demo	cluster_secreted_cytokines	0.83	Demo score highlights cytokine-family sequence context.
+IL23R	Q5VWK5	ESM-2-demo	cluster_receptors	0.72	Demo score highlights receptor-family sequence context.
+STAT3	P40763	ESM-2-demo	cluster_signaling_factors	0.65	Demo score highlights conserved signaling protein context.
+TNF	P01375	ESM-2-demo	cluster_secreted_cytokines	0.68	Demo score highlights cytokine-family sequence context.

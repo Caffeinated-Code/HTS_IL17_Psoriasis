@@ -1,0 +1,6 @@
+gene_symbol	top_cell_type	celltype_score	dataset_accession	celltype_note
+RORC	T cells	0.82	GSE162183	Relevant to Th17 lineage but cell abundance and activation state matter.
+IL17A	T cells	0.90	GSE162183	Strong disease-relevant immune-cell context.
+IL23R	T cells	0.78	GSE162183	Supports IL-23 responsive immune compartment.
+STAT3	Keratinocytes and immune cells	0.66	GSE162183	Broad signaling context; less specific.
+TNF	Myeloid cells and T cells	0.71	GSE162183	Broad inflammatory source-cell context.

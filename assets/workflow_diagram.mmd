@@ -1,0 +1,17 @@
+flowchart LR
+    A["PubChem AID2604 ROR gamma qHTS"] --> B["screen_qc"]
+    A2["PubChem AID2546 counterscreen"] --> B
+    C["GSE54456 psoriasis RNA-seq"] --> D["disease_omics"]
+    E["PXD021673 proteomics"] --> F["proteomics_validate"]
+    G["GSE162183 scRNA-seq"] --> H["singlecell_context"]
+    I["UniProt protein sequences"] --> J["protein_embeddings"]
+    K["AlphaFold DB / ESMFold optional"] --> L["structure_features"]
+    B --> M["rank_candidates"]
+    D --> M
+    F --> M
+    H --> M
+    J --> M
+    L --> M
+    M --> N["llm_evidence_cards"]
+    N --> O["report"]
+    O --> P["Streamlit app"]

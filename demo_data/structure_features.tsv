@@ -1,0 +1,6 @@
+gene_symbol	structure_source	structure_confidence_score	structure_note
+RORC	AlphaFoldDB-demo	0.84	High-confidence structured nuclear receptor domains; binding claims require assay validation.
+IL17A	AlphaFoldDB-demo	0.80	Secreted cytokine structure context available; peptide interaction claims require direct modeling.
+IL23R	AlphaFoldDB-demo	0.63	Receptor regions may include lower-confidence extracellular/domain boundaries.
+STAT3	AlphaFoldDB-demo	0.78	Structured domains support mechanistic annotation, not specificity.
+TNF	AlphaFoldDB-demo	0.75	Cytokine structure known, but broad inflammatory biology limits specificity.

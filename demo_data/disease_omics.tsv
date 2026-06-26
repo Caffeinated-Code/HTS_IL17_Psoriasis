@@ -1,0 +1,6 @@
+gene_symbol	log2fc	adj_pvalue	disease_score	dataset_accession	disease_note
+RORC	1.21	0.004	0.78	GSE54456	Th17-lineage transcription factor elevated in inflammatory disease context.
+IL17A	2.85	0.0001	0.95	GSE54456	Canonical psoriasis inflammatory cytokine signal.
+IL23R	1.64	0.002	0.86	GSE54456	Supports IL-23 driven Th17 biology.
+STAT3	0.88	0.018	0.64	GSE54456	Signal transduction node with moderate expression support.
+TNF	1.32	0.007	0.73	GSE54456	Broad inflammatory cytokine with disease expression support.

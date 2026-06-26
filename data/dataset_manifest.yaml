@@ -1,0 +1,57 @@
+project: HTS_IL17_Psoriasis
+description: >
+  Public-data plan and toy demo manifest for a FAIR screening-to-biology
+  prioritization workflow in psoriasis / IL-17 biology.
+datasets:
+  - id: pubchem_aid_2604
+    layer: hts_qhts
+    title: ROR gamma transcriptional activity qHTS
+    url: https://pubchem.ncbi.nlm.nih.gov/bioassay/2604
+    accession: AID2604
+    local_demo_file: demo_data/screen_assays.tsv
+    use: Pathway-proximal HTS-style discovery signal.
+    limitation: Small-molecule transcriptional assay; not a direct peptide or IL-17 assay.
+  - id: pubchem_aid_2546
+    layer: hts_counterscreen
+    title: VP16 counterscreen for ROR gamma assay artifacts
+    url: https://pubchem.ncbi.nlm.nih.gov/bioassay/2546
+    accession: AID2546
+    local_demo_file: demo_data/screen_assays.tsv
+    use: Artifact and non-specific transcriptional activation filtering.
+    limitation: Counterscreen interpretation depends on assay details and thresholds.
+  - id: chembl_rorc_context
+    layer: bioactivity_context
+    title: ChEMBL ROR gamma / IL-17 pathway assay context
+    url: https://www.ebi.ac.uk/chembl/explore/assay/CHEMBL2114842
+    accession: CHEMBL2114842
+    local_demo_file: demo_data/screen_assays.tsv
+    use: Curated drug-discovery assay context.
+    limitation: Not all relevant biology has curated comparable assay records.
+  - id: geo_gse54456
+    layer: transcriptomics
+    title: Psoriasis lesional vs normal skin RNA-seq
+    url: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE54456
+    accession: GSE54456
+    local_demo_file: demo_data/disease_omics.tsv
+    use: Disease expression evidence.
+    limitation: Demo uses small candidate-level summary values.
+  - id: pride_pxd021673
+    layer: proteomics
+    title: Psoriasis skin LC-MS/MS proteomics
+    url: https://www.ebi.ac.uk/pride/archive/projects/PXD021673
+    accession: PXD021673
+    local_demo_file: demo_data/proteomics_validation.tsv
+    use: Protein-level validation of disease candidates.
+    limitation: RNA and protein signals may not match.
+  - id: geo_gse162183
+    layer: single_cell
+    title: Psoriasis skin single-cell RNA-seq
+    url: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE162183
+    accession: GSE162183
+    local_demo_file: demo_data/singlecell_context.tsv
+    use: Cell-type context for ranked candidates.
+    limitation: Demo uses simplified cell-type evidence summaries.
+provenance_defaults:
+  license_note: Check source dataset licenses and terms before redistribution.
+  demo_mode: true
+  generated_outputs: results/

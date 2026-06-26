@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>HTS_IL17_Psoriasis Dashboard</title>
+  <script src='https://cdn.plot.ly/plotly-2.35.2.min.js'></script>
+  <style>
+    :root { color-scheme: light; --ink:#172033; --muted:#5b6475; --line:#d9dee8; --panel:#f8fafc; --accent:#0f766e; }
+    body { margin:0; font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color:var(--ink); background:#ffffff; }
+    header { padding:44px 6vw 26px; background:linear-gradient(180deg,#eef7f5,#ffffff); border-bottom:1px solid var(--line); }
+    main { padding:28px 6vw 56px; }
+    h1 { margin:0 0 10px; font-size:clamp(2rem,4vw,4rem); letter-spacing:0; }
+    h2 { margin-top:34px; }
+    .subtitle { max-width:980px; color:var(--muted); font-size:1.08rem; line-height:1.55; }
+    .notice { background:#fff7ed; border-left:5px solid #f97316; padding:14px 16px; margin:20px 0; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px; }
+    .metric { background:var(--panel); border:1px solid var(--line); padding:18px; border-radius:8px; }
+    .metric b { display:block; font-size:1.9rem; color:var(--accent); }
+    table { border-collapse:collapse; width:100%; font-size:.92rem; }
+    th,td { border:1px solid var(--line); padding:9px; text-align:left; vertical-align:top; }
+    th { background:#eef2f7; }
+    .card { border:1px solid var(--line); border-radius:8px; padding:18px; background:#fff; }
+    .cite { color:var(--muted); font-size:.9rem; }
+    #scoreChart,#scatterChart { min-height:390px; }
+    code { background:#eef2f7; padding:2px 5px; border-radius:4px; }
+  </style>
+</head>
+<body>
+<header>
+  <h1>HTS_IL17_Psoriasis</h1>
+  <p class='subtitle'>A public, FAIR screening-to-biology dashboard integrating qHTS-style assay evidence, psoriasis omics, proteomics validation, protein AI features, structural context, and grounded evidence cards.</p>
+</header>
+<main>
+  <div class='notice'>Director-level caveat: this is a public-data-shaped demo. ROR gamma qHTS is pathway-proximal and small-molecule based; it is not a direct IL-17 peptide screen or efficacy model.</div>
+  <section class='grid'>
+    <div class='metric'><b>5</b> demo candidates ranked</div>
+    <div class='metric'><b>IL17A</b> top integrated score</div>
+    <div class='metric'><b>4</b> public evidence layers represented</div>
+  </section>
+  <h2>Candidate Ranking</h2>
+  <table><thead><tr><th>Rank</th><th>Gene</th><th>Protein</th><th>Score</th><th>Screen QC</th><th>Cell Context</th><th>Limitations</th></tr></thead><tbody><tr><td>1</td><td>IL17A</td><td>Interleukin 17A</td><td>0.806</td><td>moderate_screen_support</td><td>T cells</td><td>No major demo limitation flagged beyond public toy-data scope.</td></tr>
+<tr><td>2</td><td>RORC</td><td>RAR-related orphan receptor gamma</td><td>0.774</td><td>strong_screen_support</td><td>T cells</td><td>weak protein-level support; pathway-proximal qHTS, not direct IL-17 peptide screen</td></tr>
+<tr><td>3</td><td>IL23R</td><td>Interleukin 23 receptor</td><td>0.683</td><td>moderate_screen_support</td><td>T cells</td><td>No major demo limitation flagged beyond public toy-data scope.</td></tr>
+<tr><td>4</td><td>STAT3</td><td>Signal transducer and activator of transcription 3</td><td>0.563</td><td>weak_screen_support</td><td>Keratinocytes and immune cells</td><td>weak protein-level support</td></tr>
+<tr><td>5</td><td>TNF</td><td>Tumor necrosis factor</td><td>0.505</td><td>artifact_risk</td><td>Myeloid cells and T cells</td><td>counterscreen artifact risk</td></tr></tbody></table>
+  <h2>Score Breakdown</h2>
+  <div id='scoreChart'></div>
+  <h2>Screening vs Disease Evidence</h2>
+  <div id='scatterChart'></div>
+  <h2>Grounded Evidence Cards</h2>
+  <div class='grid'><section class='card'><h3>IL17A</h3><p><strong>Summary:</strong> IL17A ranks #1 with a transparent score of 0.806. The candidate combines moderate_screen_support screening evidence, disease score 0.95, proteomics score 0.87, and T cells cell-type context. This is a hypothesis-generating prioritization result, not proof of therapeutic efficacy.</p><p><strong>Limitations:</strong> No major demo limitation flagged beyond public toy-data scope.</p><p><strong>Next validation:</strong> Validate pathway modulation in a psoriasis-relevant keratinocyte/immune co-culture assay with orthogonal protein readouts.</p><p class='cite'>PubChem AID2604/AID2546; GSE54456; PXD021673; GSE162183</p></section>
+<section class='card'><h3>RORC</h3><p><strong>Summary:</strong> RORC ranks #2 with a transparent score of 0.774. The candidate combines strong_screen_support screening evidence, disease score 0.78, proteomics score 0.48, and T cells cell-type context. This is a hypothesis-generating prioritization result, not proof of therapeutic efficacy.</p><p><strong>Limitations:</strong> weak protein-level support; pathway-proximal qHTS, not direct IL-17 peptide screen</p><p><strong>Next validation:</strong> Validate pathway modulation in a psoriasis-relevant keratinocyte/immune co-culture assay with orthogonal protein readouts.</p><p class='cite'>PubChem AID2604/AID2546; GSE54456; PXD021673; GSE162183</p></section>
+<section class='card'><h3>IL23R</h3><p><strong>Summary:</strong> IL23R ranks #3 with a transparent score of 0.683. The candidate combines moderate_screen_support screening evidence, disease score 0.86, proteomics score 0.62, and T cells cell-type context. This is a hypothesis-generating prioritization result, not proof of therapeutic efficacy.</p><p><strong>Limitations:</strong> No major demo limitation flagged beyond public toy-data scope.</p><p><strong>Next validation:</strong> Validate pathway modulation in a psoriasis-relevant keratinocyte/immune co-culture assay with orthogonal protein readouts.</p><p class='cite'>PubChem AID2604/AID2546; GSE54456; PXD021673; GSE162183</p></section>
+<section class='card'><h3>STAT3</h3><p><strong>Summary:</strong> STAT3 ranks #4 with a transparent score of 0.563. The candidate combines weak_screen_support screening evidence, disease score 0.64, proteomics score 0.45, and Keratinocytes and immune cells cell-type context. This is a hypothesis-generating prioritization result, not proof of therapeutic efficacy.</p><p><strong>Limitations:</strong> weak protein-level support</p><p><strong>Next validation:</strong> Test specificity of pathway modulation and separate broad signaling effects from disease-selective biology.</p><p class='cite'>PubChem AID2604/AID2546; GSE54456; PXD021673; GSE162183</p></section>
+<section class='card'><h3>TNF</h3><p><strong>Summary:</strong> TNF ranks #5 with a transparent score of 0.505. The candidate combines artifact_risk screening evidence, disease score 0.73, proteomics score 0.70, and Myeloid cells and T cells cell-type context. This is a hypothesis-generating prioritization result, not proof of therapeutic efficacy.</p><p><strong>Limitations:</strong> counterscreen artifact risk</p><p><strong>Next validation:</strong> Run focused counterscreens to distinguish broad inflammation from specific IL-17 pathway modulation.</p><p class='cite'>PubChem AID2604/AID2546; GSE54456; PXD021673; GSE162183</p></section></div>
+</main>
+<script>
+const rows = [{"rank": "1", "candidate_id": "CAND_IL17A_002", "gene_symbol": "IL17A", "protein_name": "Interleukin 17A", "rank_score": 0.806, "screen_qc_score": 0.698, "screen_qc_call": "moderate_screen_support", "selectivity_score": "0.620", "disease_score": 0.95, "proteomics_score": 0.87, "celltype_score": 0.9, "protein_ai_score": 0.83, "structure_confidence_score": 0.8, "top_cell_type": "T cells", "dataset_citations": "PubChem AID2604/AID2546; GSE54456; PXD021673; GSE162183", "biological_interpretation": "No direct qHTS in demo; pathway target retained for biological context. | Canonical psoriasis inflammatory cytokine signal. | Protein-level inflammatory support in lesional skin. | Strong disease-relevant immune-cell context. | Demo score highlights cytokine-family sequence context. | Secreted cytokine structure context available; peptide interaction claims require direct modeling.", "limitations": "No major demo limitation flagged beyond public toy-data scope."}, {"rank": "2", "candidate_id": "CAND_RORC_001", "gene_symbol": "RORC", "protein_name": "RAR-related orphan receptor gamma", "rank_score": 0.774, "screen_qc_score": 0.892, "screen_qc_call": "strong_screen_support", "selectivity_score": "0.840", "disease_score": 0.78, "proteomics_score": 0.48, "celltype_score": 0.82, "protein_ai_score": 0.76, "structure_confidence_score": 0.84, "top_cell_type": "T cells", "dataset_citations": "PubChem AID2604/AID2546; GSE54456; PXD021673; GSE162183", "biological_interpretation": "Strong pathway-proximal activity with low VP16 counterscreen signal. | Th17-lineage transcription factor elevated in inflammatory disease context. | Protein evidence is weaker than RNA; interpret cautiously. | Relevant to Th17 lineage but cell abundance and activation state matter. | Demo score represents sequence-model feature context, not a validated prediction. | High-confidence structured nuclear receptor domains; binding claims require assay validation.", "limitations": "weak protein-level support; pathway-proximal qHTS, not direct IL-17 peptide screen"}, {"rank": "3", "candidate_id": "CAND_IL23R_003", "gene_symbol": "IL23R", "protein_name": "Interleukin 23 receptor", "rank_score": 0.683, "screen_qc_score": 0.628, "screen_qc_call": "moderate_screen_support", "selectivity_score": "0.530", "disease_score": 0.86, "proteomics_score": 0.62, "celltype_score": 0.78, "protein_ai_score": 0.72, "structure_confidence_score": 0.63, "top_cell_type": "T cells", "dataset_citations": "PubChem AID2604/AID2546; GSE54456; PXD021673; GSE162183", "biological_interpretation": "Upstream Th17 maintenance target with moderate assay-context evidence. | Supports IL-23 driven Th17 biology. | Moderate protein-level support. | Supports IL-23 responsive immune compartment. | Demo score highlights receptor-family sequence context. | Receptor regions may include lower-confidence extracellular/domain boundaries.", "limitations": "No major demo limitation flagged beyond public toy-data scope."}, {"rank": "4", "candidate_id": "CAND_STAT3_004", "gene_symbol": "STAT3", "protein_name": "Signal transducer and activator of transcription 3", "rank_score": 0.563, "screen_qc_score": 0.532, "screen_qc_call": "weak_screen_support", "selectivity_score": "0.350", "disease_score": 0.64, "proteomics_score": 0.45, "celltype_score": 0.66, "protein_ai_score": 0.65, "structure_confidence_score": 0.78, "top_cell_type": "Keratinocytes and immune cells", "dataset_citations": "PubChem AID2604/AID2546; GSE54456; PXD021673; GSE162183", "biological_interpretation": "Relevant transcriptional pathway node; counterscreen requires caution. | Signal transduction node with moderate expression support. | Weak-to-moderate protein evidence. | Broad signaling context; less specific. | Demo score highlights conserved signaling protein context. | Structured domains support mechanistic annotation, not specificity.", "limitations": "weak protein-level support"}, {"rank": "5", "candidate_id": "CAND_TNFA_005", "gene_symbol": "TNF", "protein_name": "Tumor necrosis factor", "rank_score": 0.505, "screen_qc_score": 0.123, "screen_qc_call": "artifact_risk", "selectivity_score": "0.100", "disease_score": 0.73, "proteomics_score": 0.7, "celltype_score": 0.71, "protein_ai_score": 0.68, "structure_confidence_score": 0.75, "top_cell_type": "Myeloid cells and T cells", "dataset_citations": "PubChem AID2604/AID2546; GSE54456; PXD021673; GSE162183", "biological_interpretation": "Inflammatory relevance but weak selectivity in this toy screen. | Broad inflammatory cytokine with disease expression support. | Inflammatory protein evidence, but broad biology. | Broad inflammatory source-cell context. | Demo score highlights cytokine-family sequence context. | Cytokine structure known, but broad inflammatory biology limits specificity.", "limitations": "counterscreen artifact risk"}];
+const scores = {"IL17A": {"Screen QC": 0.698, "Disease RNA": 0.95, "Proteomics": 0.87, "Cell context": 0.9, "Protein AI": 0.83, "Structure": 0.8}, "RORC": {"Screen QC": 0.892, "Disease RNA": 0.78, "Proteomics": 0.48, "Cell context": 0.82, "Protein AI": 0.76, "Structure": 0.84}, "IL23R": {"Screen QC": 0.628, "Disease RNA": 0.86, "Proteomics": 0.62, "Cell context": 0.78, "Protein AI": 0.72, "Structure": 0.63}, "STAT3": {"Screen QC": 0.532, "Disease RNA": 0.64, "Proteomics": 0.45, "Cell context": 0.66, "Protein AI": 0.65, "Structure": 0.78}, "TNF": {"Screen QC": 0.123, "Disease RNA": 0.73, "Proteomics": 0.7, "Cell context": 0.71, "Protein AI": 0.68, "Structure": 0.75}};
+const first = rows[0].gene_symbol;
+Plotly.newPlot('scoreChart', [{
+  type:'bar', orientation:'h',
+  y:Object.keys(scores[first]), x:Object.values(scores[first]),
+  marker:{color:'#0f766e'}
+}], {margin:{l:120,r:20,t:20,b:40}, xaxis:{range:[0,1], title:'score'}, title:first + ' evidence components'});
+Plotly.newPlot('scatterChart', [{
+  type:'scatter', mode:'markers+text',
+  x:rows.map(r=>r.screen_qc_score), y:rows.map(r=>r.disease_score),
+  text:rows.map(r=>r.gene_symbol), textposition:'top center',
+  marker:{size:rows.map(r=>18 + r.rank_score*24), color:rows.map(r=>r.proteomics_score), colorscale:'Teal', showscale:true, colorbar:{title:'Proteomics'}},
+  hovertext:rows.map(r=>`${r.gene_symbol}<br>${r.limitations}`), hoverinfo:'text'
+}], {margin:{l:60,r:20,t:20,b:60}, xaxis:{range:[0,1], title:'screen QC score'}, yaxis:{range:[0,1], title:'disease RNA score'}});
+</script>
+</body>
+</html>

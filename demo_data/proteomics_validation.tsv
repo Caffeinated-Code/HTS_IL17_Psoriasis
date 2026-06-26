@@ -1,0 +1,6 @@
+gene_symbol	protein_log2fc	protein_qvalue	proteomics_score	dataset_accession	proteomics_note
+RORC	0.42	0.080	0.48	PXD021673	Protein evidence is weaker than RNA; interpret cautiously.
+IL17A	1.18	0.012	0.87	PXD021673	Protein-level inflammatory support in lesional skin.
+IL23R	0.58	0.041	0.62	PXD021673	Moderate protein-level support.
+STAT3	0.36	0.070	0.45	PXD021673	Weak-to-moderate protein evidence.
+TNF	0.82	0.024	0.70	PXD021673	Inflammatory protein evidence, but broad biology.
