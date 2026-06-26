@@ -1,12 +1,12 @@
-# Grounded LLM Evidence Primer
+# Grounded Evidence Summary Primer
 
-An LLM can be useful for summarizing structured scientific evidence, but it must be constrained. In this project, the LLM role is evidence synthesis, not discovery by memory.
+Language models can be useful for summarizing structured scientific evidence, but they need guardrails. In this project, the summary layer is for evidence synthesis, not discovery by memory.
 
 ```mermaid
 flowchart LR
     A["Workflow tables"] --> B["Evidence-grounded prompt"]
     C["Dataset accessions"] --> B
-    B --> D["LLM or deterministic template"]
+    B --> D["Summary template or reviewed model output"]
     D --> E["Evidence card"]
     E --> F["Human review"]
 ```
@@ -17,7 +17,7 @@ flowchart LR
 - Disease expression evidence
 - Proteomics support
 - Cell-type context
-- Protein AI and structure feature notes
+- Protein model and structure feature notes
 - Dataset accessions and workflow provenance
 
 ## Outputs
@@ -36,4 +36,4 @@ flowchart LR
 
 ## Local Demo Mode
 
-The current workflow uses deterministic templates to produce LLM-style evidence cards. This keeps the project runnable without an API key while documenting exactly how a real LLM/RAG module should behave.
+The current workflow uses deterministic templates to produce evidence cards. This keeps the project runnable without an API key while documenting exactly how a model-backed summarizer should behave.

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Project Plan</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Project Plan</h1>
+</header>
+<h1 id="project-plan-hts_il17_psoriasis">Project Plan:
+HTS_IL17_Psoriasis</h1>
+<h2 id="objective">Objective</h2>
+<p>Build a FAIR, locally runnable, AWS-adaptable Nextflow workflow and
+Streamlit app that integrates public HTS/qHTS-style assay data,
+psoriasis disease omics, proteomics, protein model features, optional
+structure prediction evidence, and grounded evidence summaries.</p>
+<p>The project should be reviewed as a staff-scientist-level portfolio
+project: scientifically useful, transparent about limitations, and
+structured so it could be extended to real screening data.</p>
+<h2 id="scientific-question">Scientific Question</h2>
+<p>Which Th17/IL-17 psoriasis pathway candidates are most compelling
+when ranked by:</p>
+<ul>
+<li>HTS-style activity and counterscreen selectivity</li>
+<li>psoriasis disease expression evidence</li>
+<li>protein-level validation</li>
+<li>disease-relevant cell-type context</li>
+<li>protein model features</li>
+<li>optional AlphaFold/ESMFold structure confidence</li>
+<li>transparent evidence summaries</li>
+</ul>
+<h2 id="implementation-phases">Implementation Phases</h2>
+<h3 id="phase-1-local-demo">Phase 1: Local Demo</h3>
+<ul>
+<li>Use bundled compact example datasets with public-data-shaped
+columns.</li>
+<li>Run <code>nextflow run main.nf -profile test</code>.</li>
+<li>Generate tables, evidence cards, report, and app data.</li>
+<li>Launch <code>streamlit run app/streamlit_app.py</code>.</li>
+</ul>
+<h3 id="phase-2-public-data-expansion">Phase 2: Public Data
+Expansion</h3>
+<ul>
+<li>Add real PubChem PUG-REST retrieval for AID 2604 and AID 2546.</li>
+<li>Add ChEMBL API retrieval for RORC/IL-17 pathway assay records.</li>
+<li>Add processed GSE54456 import and DESeq2-style differential
+expression.</li>
+<li>Add PRIDE/PXD021673 processed protein quantification import.</li>
+<li>Add GSE162183 processed marker/cell-type summaries.</li>
+</ul>
+<h3 id="phase-3-protein-models-and-structure">Phase 3: Protein Models
+And Structure</h3>
+<ul>
+<li>Add ESM-2, ProtBERT, or ProtTrans embedding generation for top
+candidates.</li>
+<li>Cache embeddings with accession, model name, and model version.</li>
+<li>Add AlphaFold DB lookup or optional ESMFold prediction for top
+candidates only.</li>
+<li>Keep GPU and large model calls optional.</li>
+</ul>
+<h3 id="phase-4-grounded-evidence-summaries">Phase 4: Grounded Evidence
+Summaries</h3>
+<ul>
+<li>Add a grounded summarization module that consumes workflow tables
+only.</li>
+<li>Require accession and table citations in every evidence card.</li>
+<li>Emit limitations and next-experiment suggestions.</li>
+<li>Allow local template mode when no model API key is available.</li>
+</ul>
+<h2 id="scoring-model">Scoring Model</h2>
+<p>The first implementation uses a transparent weighted score:</p>
+<table>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 40%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr>
+<th>Component</th>
+<th style="text-align: right;">Weight</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HTS activity</td>
+<td style="text-align: right;">0.20</td>
+<td>Captures screen signal</td>
+</tr>
+<tr>
+<td>Counterscreen selectivity</td>
+<td style="text-align: right;">0.15</td>
+<td>Penalizes assay artifacts</td>
+</tr>
+<tr>
+<td>Disease RNA evidence</td>
+<td style="text-align: right;">0.20</td>
+<td>Prioritizes psoriasis-relevant expression</td>
+</tr>
+<tr>
+<td>Proteomics support</td>
+<td style="text-align: right;">0.15</td>
+<td>Adds protein-level validation</td>
+</tr>
+<tr>
+<td>Cell-type relevance</td>
+<td style="text-align: right;">0.10</td>
+<td>Connects target to skin/immune cell biology</td>
+</tr>
+<tr>
+<td>Protein model feature score</td>
+<td style="text-align: right;">0.10</td>
+<td>Adds sequence/model-derived context</td>
+</tr>
+<tr>
+<td>Structure confidence</td>
+<td style="text-align: right;">0.10</td>
+<td>Adds structural plausibility when available</td>
+</tr>
+</tbody>
+</table>
+<p>This should stay configurable in future versions.</p>
+<h2 id="actionable-biological-insights-to-surface">Actionable Biological
+Insights To Surface</h2>
+<ul>
+<li>Does the candidate align with Th17/IL-17 biology, keratinocyte
+activation, cytokine signaling, or inflammatory skin proteomics?</li>
+<li>Is the candidate supported at both RNA and protein levels?</li>
+<li>Is the signal specific to disease-relevant cell types, or broadly
+expressed?</li>
+<li>Does the HTS signal survive counterscreen filtering?</li>
+<li>Is structure evidence high-confidence enough to support follow-up
+modeling?</li>
+<li>What validation experiment would reduce uncertainty fastest?</li>
+</ul>
+<h2 id="critical-review-notes">Critical Review Notes</h2>
+<ul>
+<li>The HTS data are pathway-proximal small-molecule assays, not peptide
+screens.</li>
+<li>ROR gamma is upstream of IL-17 biology; this supports relevance but
+not direct IL-17 binding.</li>
+<li>RNA-protein concordance can be imperfect; discordance should be
+flagged, not hidden.</li>
+<li>Protein language model embeddings are features, not explanations by
+themselves.</li>
+<li>Structure prediction confidence is not interaction validation.</li>
+<li>Evidence-summary output must be evidence-grounded and
+citation-backed.</li>
+</ul>
+<h2 id="things-to-do">Things To Do</h2>
+<ul>
+<li>Replace compact example tables with full public dataset
+downloads.</li>
+<li>Add raw FASTQ mode for transcriptomics as an optional cloud
+workflow.</li>
+<li>Add richer cheminformatics for PubChem compounds.</li>
+<li>Add peptide-specific public assay data if a suitable source is
+found.</li>
+<li>Add model-card-style documentation for protein-model and
+evidence-summary components.</li>
+<li>Add CI using <code>nextflow run main.nf -profile test</code>.</li>
+<li>Add screenshots after the app is visually reviewed.</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Protein Language Models Primer</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Protein Language Models Primer</h1>
+</header>
+<h1 id="protein-language-models-primer">Protein Language Models
+Primer</h1>
+<p>Protein language models such as ESM-2, ProtBERT, and ProtTrans learn
+representations of protein sequences from large collections of proteins.
+Their embeddings can capture sequence similarity, family structure, and
+some biochemical context.</p>
+<pre class="mermaid"><code>flowchart LR
+    A[&quot;Protein sequence&quot;] --&gt; B[&quot;Protein language model&quot;]
+    B --&gt; C[&quot;Embedding vector&quot;]
+    C --&gt; D[&quot;Clusters and features&quot;]
+    D --&gt; E[&quot;Candidate context&quot;]</code></pre>
+<h2 id="why-it-matters-here">Why It Matters Here</h2>
+<p>Protein embeddings provide a reusable feature layer for candidate
+proteins or peptides. They can help cluster candidates, compare sequence
+families, or feed downstream ranking models.</p>
+<h2 id="common-pitfalls">Common Pitfalls</h2>
+<ul>
+<li>Embeddings are not explanations by themselves.</li>
+<li>A model trained on sequence does not automatically understand assay
+biology.</li>
+<li>Predictive use requires validation on a relevant task.</li>
+</ul>
+<h2 id="project-guardrail">Project Guardrail</h2>
+<p>This example uses protein model scores as contextual features only.
+They do not prove mechanism or efficacy.</p>
+</body>
+</html>

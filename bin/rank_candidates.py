@@ -94,7 +94,7 @@ for gene, s in screen.items():
             m.get("model_note"),
             st.get("structure_note"),
         ])),
-        "limitations": "; ".join(limitation) if limitation else "No major demo limitation flagged beyond public toy-data scope.",
+        "limitations": "; ".join(limitation) if limitation else "No major limitation flagged beyond compact public example-data scope.",
     })
 
 rows.sort(key=lambda row: float(row["rank_score"]), reverse=True)

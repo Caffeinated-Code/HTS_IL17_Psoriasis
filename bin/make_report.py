@@ -35,7 +35,7 @@ doc = f"""<!doctype html>
 </head>
 <body>
   <h1>HTS_IL17_Psoriasis Report</h1>
-  <p class=\"note\">This report is generated from toy public-data-shaped demo tables. It demonstrates workflow structure, scoring, provenance, and evidence summarization.</p>
+  <p class=\"note\">This report is generated from compact public-data-shaped example tables. It demonstrates workflow structure, scoring, provenance, and evidence summarization.</p>
   <h2>Candidate Ranking</h2>
   <table>
     <thead><tr><th>Rank</th><th>Gene</th><th>Score</th><th>Screen QC</th><th>Top Cell Type</th><th>Limitations</th></tr></thead>
@@ -52,7 +52,7 @@ with open(html_out, "w") as out:
 provenance = {
     "project": "HTS_IL17_Psoriasis",
     "generated_at_utc": datetime.now(timezone.utc).isoformat(),
-    "mode": "toy_demo",
+    "mode": "compact_example",
     "inputs": [
         "PubChem AID2604/AID2546-shaped demo data",
         "GSE54456-shaped demo data",

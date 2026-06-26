@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>FAIR Nextflow And AWS Primer</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">FAIR Nextflow And AWS Primer</h1>
+</header>
+<h1 id="fair-nextflow-and-aws-primer">FAIR Nextflow And AWS Primer</h1>
+<p>FAIR means data and workflows should be Findable, Accessible,
+Interoperable, and Reusable. A workflow does not become FAIR just
+because it runs; it needs metadata, provenance, versioning, and clear
+outputs.</p>
+<pre class="mermaid"><code>flowchart LR
+    A[&quot;Dataset manifest&quot;] --&gt; B[&quot;Nextflow workflow&quot;]
+    C[&quot;Containers and versions&quot;] --&gt; B
+    D[&quot;Parameters&quot;] --&gt; B
+    B --&gt; E[&quot;Results&quot;]
+    B --&gt; F[&quot;Provenance&quot;]
+    E --&gt; G[&quot;Reusable report/app&quot;]</code></pre>
+<h2 id="fair-choices-in-this-project">FAIR Choices In This Project</h2>
+<ul>
+<li>stable dataset accessions in
+<code>data/dataset_manifest.yaml</code></li>
+<li>parameterized paths</li>
+<li>standardized results folders</li>
+<li>provenance JSON</li>
+<li>documented caveats and public-data limitations</li>
+<li>test profile for quick validation</li>
+</ul>
+<h2 id="aws-adaptation">AWS Adaptation</h2>
+<p>The <code>awsbatch</code> profile is a template for S3-backed
+execution with AWS Batch. Before using it, replace:</p>
+<ul>
+<li><code>YOUR_AWS_BATCH_QUEUE</code></li>
+<li><code>YOUR_ECR_OR_PUBLIC_CONTAINER</code></li>
+<li><code>s3://YOUR_BUCKET/...</code></li>
+</ul>
+<h2 id="common-pitfalls">Common Pitfalls</h2>
+<ul>
+<li>Hardcoded local paths.</li>
+<li>Missing dataset versions or accessions.</li>
+<li>Reports without provenance.</li>
+<li>Cloud workflows that cannot run locally in a small test mode.</li>
+</ul>
+</body>
+</html>

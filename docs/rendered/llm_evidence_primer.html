@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Grounded Evidence Summary Primer</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Grounded Evidence Summary Primer</h1>
+</header>
+<h1 id="grounded-evidence-summary-primer">Grounded Evidence Summary
+Primer</h1>
+<p>Language models can be useful for summarizing structured scientific
+evidence, but they need guardrails. In this project, the summary layer
+is for evidence synthesis, not discovery by memory.</p>
+<pre class="mermaid"><code>flowchart LR
+    A[&quot;Workflow tables&quot;] --&gt; B[&quot;Evidence-grounded prompt&quot;]
+    C[&quot;Dataset accessions&quot;] --&gt; B
+    B --&gt; D[&quot;Summary template or reviewed model output&quot;]
+    D --&gt; E[&quot;Evidence card&quot;]
+    E --&gt; F[&quot;Human review&quot;]</code></pre>
+<h2 id="inputs">Inputs</h2>
+<ul>
+<li>HTS activity and counterscreen status</li>
+<li>Disease expression evidence</li>
+<li>Proteomics support</li>
+<li>Cell-type context</li>
+<li>Protein model and structure feature notes</li>
+<li>Dataset accessions and workflow provenance</li>
+</ul>
+<h2 id="outputs">Outputs</h2>
+<ul>
+<li>concise biological rationale</li>
+<li>limitations and uncertainty</li>
+<li>suggested next validation experiment</li>
+<li>citations to workflow outputs and public accessions</li>
+</ul>
+<h2 id="guardrails">Guardrails</h2>
+<ul>
+<li>No uncited biological claims.</li>
+<li>No clinical efficacy claims.</li>
+<li>No company-specific claims.</li>
+<li>Separate supported evidence from hypotheses.</li>
+</ul>
+<h2 id="local-demo-mode">Local Demo Mode</h2>
+<p>The current workflow uses deterministic templates to produce evidence
+cards. This keeps the project runnable without an API key while
+documenting exactly how a model-backed summarizer should behave.</p>
+</body>
+</html>

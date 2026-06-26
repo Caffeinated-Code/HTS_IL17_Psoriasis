@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Analysis Walkthrough</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Analysis Walkthrough</h1>
+</header>
+<h1 id="analysis-walkthrough">Analysis Walkthrough</h1>
+<p>This walkthrough explains how to read the
+<code>HTS_IL17_Psoriasis</code> like a discovery scientist reviewing a
+screening-to-biology prioritization workflow.</p>
+<h2 id="start-with-the-scientific-question">1. Start With The Scientific
+Question</h2>
+<p>The workflow asks:</p>
+<blockquote>
+<p>Which psoriasis / IL-17 pathway candidates remain interesting after
+combining screening-style evidence, disease omics, proteomics, cell-type
+context, protein model features, and structural plausibility?</p>
+</blockquote>
+<p>This is not designed to prove efficacy. It is designed to prioritize
+what deserves the next experiment.</p>
+<h2 id="interpret-the-hts-layer-carefully">2. Interpret The HTS Layer
+Carefully</h2>
+<p>The screening layer uses ROR gamma qHTS-style data as a public,
+pathway-proximal analog for Th17 / IL-17 biology. ROR gamma t is
+relevant because it regulates Th17 differentiation and IL-17
+production.</p>
+<p>The key distinction:</p>
+<ul>
+<li><strong>Supported claim:</strong> this is a useful public
+screening-data analog for upstream Th17 biology.</li>
+<li><strong>Unsupported claim:</strong> this is a direct IL-17 peptide
+screen.</li>
+</ul>
+<p>That is why the dashboard includes an interpretation note. It is not
+meant to weaken the project; it shows scientific judgment.</p>
+<h2 id="apply-counterscreen-logic">3. Apply Counterscreen Logic</h2>
+<p>The screen QC module combines:</p>
+<ul>
+<li>primary assay activity</li>
+<li>counterscreen activity</li>
+<li>selectivity</li>
+<li>artifact flag</li>
+</ul>
+<p>Candidates with strong primary activity but poor counterscreen
+behavior are penalized. In this compact example, TNF has disease
+relevance but is flagged for artifact risk, which prevents it from
+ranking too highly.</p>
+<h2 id="add-disease-transcriptomics">4. Add Disease Transcriptomics</h2>
+<p>The disease omics layer asks whether the candidate is
+transcriptionally supported in psoriasis skin.</p>
+<p>Strong disease RNA evidence helps prioritize candidates such as IL17A
+and IL23R because they align with psoriasis inflammatory biology.</p>
+<h2 id="add-protein-level-validation">5. Add Protein-Level
+Validation</h2>
+<p>Proteomics asks whether the disease signal is visible at the protein
+level.</p>
+<p>This matters because RNA and protein signals can diverge. In this
+compact example, RORC has strong screening support but weaker
+protein-level support, so it remains interesting but caveated.</p>
+<h2 id="add-cell-type-context">6. Add Cell-Type Context</h2>
+<p>Single-cell context asks which cell populations carry the signal.</p>
+<p>For psoriasis / IL-17 biology, T-cell context supports Th17
+relevance, while keratinocyte context supports downstream inflammatory
+skin response. Broad expression can be useful biologically but less
+specific for target prioritization.</p>
+<h2 id="add-protein-model-and-structure-features">7. Add Protein Model
+And Structure Features</h2>
+<p>Protein language model features and structure confidence are included
+as contextual evidence.</p>
+<p>They can help summarize protein family, sequence context, and
+structural interpretability. They do not prove mechanism, binding, or
+efficacy. The workflow treats them as supporting features, not as final
+answers.</p>
+<h2 id="review-the-integrated-ranking">8. Review The Integrated
+Ranking</h2>
+<p>The ranking is intentionally transparent:</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Evidence layer</th>
+<th>Role in ranking</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Screen QC</td>
+<td>Is there screening-style activity and selectivity?</td>
+</tr>
+<tr>
+<td>Disease RNA</td>
+<td>Is the candidate disease-relevant in psoriasis tissue?</td>
+</tr>
+<tr>
+<td>Proteomics</td>
+<td>Is there protein-level support?</td>
+</tr>
+<tr>
+<td>Cell context</td>
+<td>Is the signal in relevant cells?</td>
+</tr>
+<tr>
+<td>Protein model features</td>
+<td>Does sequence/model context support interpretation?</td>
+</tr>
+<tr>
+<td>Structure</td>
+<td>Is the protein structurally interpretable?</td>
+</tr>
+</tbody>
+</table>
+<h2 id="read-the-top-candidates-like-a-reviewer">9. Read The Top
+Candidates Like A Reviewer</h2>
+<h3 id="il17a">IL17A</h3>
+<p>IL17A ranks first because the disease, proteomics, and T-cell context
+are aligned. In a real project, this is a biology-positive control: the
+workflow should recover it.</p>
+<p>Actionable next step: validate IL-17 pathway modulation in a
+psoriasis-relevant keratinocyte / immune co-culture assay with
+orthogonal cytokine and protein readouts.</p>
+<h3 id="rorc">RORC</h3>
+<p>RORC ranks highly because the screening layer is strongest. It is
+upstream of IL-17 biology, but the proteomics support is weaker in this
+compact example.</p>
+<p>Actionable next step: confirm ROR gamma pathway modulation and
+separate true pathway activity from transcriptional assay artifacts.</p>
+<h3 id="il23r">IL23R</h3>
+<p>IL23R is a mechanistically coherent upstream immune candidate with
+disease and cell-context support.</p>
+<p>Actionable next step: evaluate IL-23-driven Th17 response markers and
+compare with IL17A/RORC behavior.</p>
+<h3 id="stat3">STAT3</h3>
+<p>STAT3 is relevant but broad. It should be treated as a pathway node
+requiring specificity checks.</p>
+<p>Actionable next step: test whether perturbation selectively affects
+IL-17 biology or broadly suppresses signaling.</p>
+<h3 id="tnf">TNF</h3>
+<p>TNF is intentionally useful as a cautionary example: strong
+inflammatory relevance does not overcome weak screening selectivity and
+artifact risk.</p>
+<p>Actionable next step: run focused counterscreens and avoid
+over-prioritizing broad inflammatory nodes without specificity.</p>
+<h2 id="what-the-evidence-summary-layer-does">10. What The Evidence
+Summary Layer Does</h2>
+<p>The evidence-card module behaves like a grounded evidence summarizer.
+In this version it uses deterministic templates, but the intended
+production behavior is:</p>
+<ul>
+<li>only summarize workflow evidence</li>
+<li>cite dataset accessions and output tables</li>
+<li>separate evidence from hypothesis</li>
+<li>suggest the next validation experiment</li>
+<li>avoid unsupported biological claims</li>
+</ul>
+<h2 id="how-to-explain-the-project">11. How To Explain The Project</h2>
+<p>A concise explanation:</p>
+<blockquote>
+<p>This project demonstrates a FAIR screening-to-biology workflow. It
+starts with public qHTS-style assay evidence around ROR gamma / Th17
+biology, then layers in psoriasis transcriptomics, proteomics,
+single-cell context, protein model features, structure confidence, and
+grounded evidence summaries. The result is a transparent ranking that
+helps decide which candidates deserve follow-up experiments, while
+clearly stating limitations.</p>
+</blockquote>
+</body>
+</html>

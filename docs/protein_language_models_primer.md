@@ -22,4 +22,4 @@ Protein embeddings provide a reusable feature layer for candidate proteins or pe
 
 ## Project Guardrail
 
-The demo uses protein AI scores as contextual features only. They do not prove mechanism or efficacy.
+This example uses protein model scores as contextual features only. They do not prove mechanism or efficacy.

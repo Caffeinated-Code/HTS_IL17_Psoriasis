@@ -23,7 +23,7 @@ def read_table(name, fallback=None):
 st.set_page_config(page_title="HTS_IL17_Psoriasis", layout="wide")
 
 st.title("HTS_IL17_Psoriasis")
-st.caption("Screening-to-biology prioritization demo with FAIR workflow outputs and grounded evidence summaries.")
+st.caption("Screening-to-biology prioritization workflow with FAIR workflow outputs and grounded evidence summaries.")
 
 rankings = read_table(
     "candidate_rankings.tsv",
@@ -47,7 +47,7 @@ with st.expander("Analysis walkthrough", expanded=True):
 3. Add psoriasis transcriptomics to test disease relevance.
 4. Add proteomics to check whether RNA-supported candidates have protein-level support.
 5. Add single-cell context to localize the signal to relevant immune or skin-cell compartments.
-6. Add protein AI and structure features as supporting interpretation layers.
+6. Add protein model and structure features as supporting interpretation layers.
 7. Generate grounded evidence cards that explain the ranking, limitations, and next validation experiment.
 """
     )
@@ -126,7 +126,7 @@ st.markdown(
     """
 - Prioritize candidates supported by more than one evidence layer.
 - Penalize counterscreen artifacts and broad inflammatory nodes when specificity is weak.
-- Treat protein AI and structure features as context, not proof.
+- Treat protein model and structure features as context, not proof.
 - Ask what validation experiment would reduce uncertainty fastest.
 """
 )

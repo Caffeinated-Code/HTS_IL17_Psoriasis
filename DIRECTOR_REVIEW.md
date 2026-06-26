@@ -2,7 +2,7 @@
 
 ## Executive Assessment
 
-This is a credible staff-scientist portfolio project because it connects screening data, disease biology, proteomics, protein AI, structure context, FAIR workflow design, and an app-facing interpretation layer. The strongest aspect is not the toy ranking itself; it is the architecture for turning heterogeneous discovery evidence into a transparent decision record.
+This is a credible staff-scientist portfolio project because it connects screening data, disease biology, proteomics, protein model features, structure context, FAIR workflow design, and an app-facing interpretation layer. The strongest aspect is not the compact ranking itself; it is the architecture for turning heterogeneous discovery evidence into a transparent decision record.
 
 The project should keep emphasizing one point clearly: this is a reusable workflow pattern. Psoriasis / IL-17 is the demo case.
 
@@ -10,7 +10,7 @@ The project should keep emphasizing one point clearly: this is a reusable workfl
 
 - The project includes an HTS-like evidence layer rather than only omics.
 - The scoring model is transparent and inspectable.
-- The LLM module is appropriately grounded in workflow outputs.
+- The evidence-card module is appropriately grounded in workflow outputs.
 - The documentation explains complex topics for mixed computational and biology audiences.
 - The app makes the output reviewable by non-pipeline users.
 - The Nextflow workflow has local and AWS-oriented profiles.
@@ -18,7 +18,7 @@ The project should keep emphasizing one point clearly: this is a reusable workfl
 ## Scientific Limitations To State Clearly
 
 - PubChem ROR gamma qHTS is pathway-proximal. It supports Th17 / IL-17 biology but is not a direct IL-17 peptide assay.
-- The current demo data are toy, candidate-level summaries shaped like public datasets.
+- The current demo data are compact, candidate-level summaries shaped like public datasets.
 - IL17A ranking highly is biologically intuitive, but the demo assay evidence for IL17A is contextual rather than direct.
 - RORC ranking highly is assay-supported, but protein-level validation is weaker in the demo and should be flagged.
 - TNF is a broad inflammatory node; a high disease/proteomics signal does not make it a specific IL-17-pathway candidate.
@@ -34,7 +34,7 @@ The project should keep emphasizing one point clearly: this is a reusable workfl
 
 ## Sequential Improvement Plan
 
-### v0.2 - Replace Toy Tables With Public Retrieval
+### v0.2 - Replace Example Tables With Public Retrieval
 
 - Implement PubChem PUG-REST retrieval for AID 2604 and AID 2546.
 - Add ChEMBL API retrieval for RORC/IL-17 pathway assay context.
@@ -55,17 +55,17 @@ The project should keep emphasizing one point clearly: this is a reusable workfl
 - Import processed GSE162183 cell-type markers or pseudobulk summaries.
 - Add a warning when a candidate is broadly expressed rather than cell-type enriched.
 
-### v0.5 - Protein AI And Structure
+### v0.5 - Protein Models And Structure
 
 - Add real UniProt sequence retrieval.
 - Add optional ESM-2 or ProtBERT embeddings with cached model metadata.
 - Add AlphaFold DB lookup for candidate proteins.
 - Keep ESMFold or heavier structure prediction optional and top-candidate-only.
 
-### v0.6 - Evidence-Grounded LLM Mode
+### v0.6 - Grounded Evidence Summary Mode
 
-- Replace deterministic evidence-card templates with an optional RAG/LLM backend.
-- Require all generated sentences to cite workflow table IDs or accessions.
+- Replace deterministic evidence-card templates with an optional reviewed model-backed summarizer.
+- Require all summary sentences to cite workflow table IDs or accessions.
 - Add a validation test that rejects evidence cards with missing citations.
 - Keep deterministic template mode as the default for reproducibility.
 
@@ -76,4 +76,3 @@ The next version should answer this review question:
 > If I only had enough budget to validate two candidates, which two should I choose, what experiment should I run first, and what evidence would make me stop?
 
 The current demo begins to answer that by nominating IL17A and RORC for different reasons: IL17A as disease-biology aligned, RORC as screen-supported and pathway-proximal. The next version should make that tradeoff quantitative and explicit.
-

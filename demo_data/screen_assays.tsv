@@ -1,6 +1,6 @@
 candidate_id	gene_symbol	protein_name	primary_assay	primary_activity_score	counterscreen_activity_score	artifact_flag	hts_note
 CAND_RORC_001	RORC	RAR-related orphan receptor gamma	ROR gamma transcriptional qHTS	0.92	0.08	false	Strong pathway-proximal activity with low VP16 counterscreen signal.
-CAND_IL17A_002	IL17A	Interleukin 17A	ChEMBL pathway bioactivity context	0.74	0.12	false	No direct qHTS in demo; pathway target retained for biological context.
+CAND_IL17A_002	IL17A	Interleukin 17A	ChEMBL pathway bioactivity context	0.74	0.12	false	No direct qHTS in this example; pathway target retained for biological context.
 CAND_IL23R_003	IL23R	Interleukin 23 receptor	ChEMBL pathway bioactivity context	0.68	0.15	false	Upstream Th17 maintenance target with moderate assay-context evidence.
 CAND_STAT3_004	STAT3	Signal transducer and activator of transcription 3	ROR gamma pathway proxy	0.63	0.28	false	Relevant transcriptional pathway node; counterscreen requires caution.
-CAND_TNFA_005	TNF	Tumor necrosis factor	ROR gamma pathway proxy	0.52	0.42	true	Inflammatory relevance but weak selectivity in this toy screen.
+CAND_TNFA_005	TNF	Tumor necrosis factor	ROR gamma pathway proxy	0.52	0.42	true	Inflammatory relevance but weak selectivity in this example screen.

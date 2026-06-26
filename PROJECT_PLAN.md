@@ -2,9 +2,9 @@
 
 ## Objective
 
-Build a FAIR, locally runnable, AWS-adaptable Nextflow workflow and Streamlit app that integrates public HTS/qHTS-style assay data, psoriasis disease omics, proteomics, protein AI features, optional structure prediction evidence, and grounded LLM summaries.
+Build a FAIR, locally runnable, AWS-adaptable Nextflow workflow and Streamlit app that integrates public HTS/qHTS-style assay data, psoriasis disease omics, proteomics, protein model features, optional structure prediction evidence, and grounded evidence summaries.
 
-The project should be reviewed as a staff-scientist-level portfolio artifact: scientifically useful, transparent about limitations, and structured so it could be extended to real internal screening data.
+The project should be reviewed as a staff-scientist-level portfolio project: scientifically useful, transparent about limitations, and structured so it could be extended to real screening data.
 
 ## Scientific Question
 
@@ -14,15 +14,15 @@ Which Th17/IL-17 psoriasis pathway candidates are most compelling when ranked by
 - psoriasis disease expression evidence
 - protein-level validation
 - disease-relevant cell-type context
-- protein AI model features
+- protein model features
 - optional AlphaFold/ESMFold structure confidence
-- transparent LLM evidence summaries
+- transparent evidence summaries
 
 ## Implementation Phases
 
 ### Phase 1: Local Demo
 
-- Use bundled toy datasets with public-data-shaped columns.
+- Use bundled compact example datasets with public-data-shaped columns.
 - Run `nextflow run main.nf -profile test`.
 - Generate tables, evidence cards, report, and app data.
 - Launch `streamlit run app/streamlit_app.py`.
@@ -35,19 +35,19 @@ Which Th17/IL-17 psoriasis pathway candidates are most compelling when ranked by
 - Add PRIDE/PXD021673 processed protein quantification import.
 - Add GSE162183 processed marker/cell-type summaries.
 
-### Phase 3: Protein AI And Structure
+### Phase 3: Protein Models And Structure
 
 - Add ESM-2, ProtBERT, or ProtTrans embedding generation for top candidates.
 - Cache embeddings with accession, model name, and model version.
 - Add AlphaFold DB lookup or optional ESMFold prediction for top candidates only.
 - Keep GPU and large model calls optional.
 
-### Phase 4: LLM Evidence Summaries
+### Phase 4: Grounded Evidence Summaries
 
 - Add a grounded summarization module that consumes workflow tables only.
 - Require accession and table citations in every evidence card.
 - Emit limitations and next-experiment suggestions.
-- Allow local template mode when no LLM API key is available.
+- Allow local template mode when no model API key is available.
 
 ## Scoring Model
 
@@ -60,7 +60,7 @@ The first implementation uses a transparent weighted score:
 | Disease RNA evidence | 0.20 | Prioritizes psoriasis-relevant expression |
 | Proteomics support | 0.15 | Adds protein-level validation |
 | Cell-type relevance | 0.10 | Connects target to skin/immune cell biology |
-| Protein AI feature score | 0.10 | Adds sequence/model-derived context |
+| Protein model feature score | 0.10 | Adds sequence/model-derived context |
 | Structure confidence | 0.10 | Adds structural plausibility when available |
 
 This should stay configurable in future versions.
@@ -81,15 +81,15 @@ This should stay configurable in future versions.
 - RNA-protein concordance can be imperfect; discordance should be flagged, not hidden.
 - Protein language model embeddings are features, not explanations by themselves.
 - Structure prediction confidence is not interaction validation.
-- LLM output must be evidence-grounded and citation-backed.
+- Evidence-summary output must be evidence-grounded and citation-backed.
 
 ## Things To Do
 
-- Replace toy tables with full public dataset downloads.
+- Replace compact example tables with full public dataset downloads.
 - Add raw FASTQ mode for transcriptomics as an optional cloud workflow.
 - Add richer cheminformatics for PubChem compounds.
 - Add peptide-specific public assay data if a suitable source is found.
-- Add model-card-style documentation for protein AI and LLM components.
+- Add model-card-style documentation for protein-model and evidence-summary components.
 - Add CI using `nextflow run main.nf -profile test`.
 - Add screenshots after the app is visually reviewed.
 

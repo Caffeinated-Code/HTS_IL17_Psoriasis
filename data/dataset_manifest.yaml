@@ -1,6 +1,6 @@
 project: HTS_IL17_Psoriasis
 description: >
-  Public-data plan and toy demo manifest for a FAIR screening-to-biology
+  Public-data plan and compact example manifest for a FAIR screening-to-biology
   prioritization workflow in psoriasis / IL-17 biology.
 datasets:
   - id: pubchem_aid_2604
@@ -53,5 +53,5 @@ datasets:
     limitation: Demo uses simplified cell-type evidence summaries.
 provenance_defaults:
   license_note: Check source dataset licenses and terms before redistribution.
-  demo_mode: true
+  example_mode: true
   generated_outputs: results/

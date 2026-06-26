@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Scientific Review And Roadmap</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Scientific Review And Roadmap</h1>
+</header>
+<h1 id="director-review-hts_il17_psoriasis">Director Review:
+HTS_IL17_Psoriasis</h1>
+<h2 id="executive-assessment">Executive Assessment</h2>
+<p>This is a credible staff-scientist portfolio project because it
+connects screening data, disease biology, proteomics, protein model
+features, structure context, FAIR workflow design, and an app-facing
+interpretation layer. The strongest aspect is not the compact ranking
+itself; it is the architecture for turning heterogeneous discovery
+evidence into a transparent decision record.</p>
+<p>The project should keep emphasizing one point clearly: this is a
+reusable workflow pattern. Psoriasis / IL-17 is the demo case.</p>
+<h2 id="what-is-strong">What Is Strong</h2>
+<ul>
+<li>The project includes an HTS-like evidence layer rather than only
+omics.</li>
+<li>The scoring model is transparent and inspectable.</li>
+<li>The evidence-card module is appropriately grounded in workflow
+outputs.</li>
+<li>The documentation explains complex topics for mixed computational
+and biology audiences.</li>
+<li>The app makes the output reviewable by non-pipeline users.</li>
+<li>The Nextflow workflow has local and AWS-oriented profiles.</li>
+</ul>
+<h2 id="scientific-limitations-to-state-clearly">Scientific Limitations
+To State Clearly</h2>
+<ul>
+<li>PubChem ROR gamma qHTS is pathway-proximal. It supports Th17 / IL-17
+biology but is not a direct IL-17 peptide assay.</li>
+<li>The current demo data are compact, candidate-level summaries shaped
+like public datasets.</li>
+<li>IL17A ranking highly is biologically intuitive, but the demo assay
+evidence for IL17A is contextual rather than direct.</li>
+<li>RORC ranking highly is assay-supported, but protein-level validation
+is weaker in the demo and should be flagged.</li>
+<li>TNF is a broad inflammatory node; a high disease/proteomics signal
+does not make it a specific IL-17-pathway candidate.</li>
+<li>Protein language model and structure scores are
+hypothesis-generating features, not validated predictors.</li>
+</ul>
+<h2 id="actionable-biological-insights">Actionable Biological
+Insights</h2>
+<ul>
+<li><strong>IL17A</strong> is the strongest biology-positive control: it
+should rank high because disease expression, proteomics, and T-cell
+context align. The next validation should test whether candidate
+perturbations reduce IL-17-driven keratinocyte inflammatory
+outputs.</li>
+<li><strong>RORC</strong> is the strongest screening-positive control:
+it should rank high from qHTS/counterscreen evidence but remain caveated
+because it is upstream and protein evidence is weaker. The next
+validation should confirm ROR gamma pathway modulation and check
+specificity.</li>
+<li><strong>IL23R</strong> is a translationally useful intermediate
+candidate: it links upstream immune signaling to Th17 maintenance and
+should be evaluated for cell-type specificity.</li>
+<li><strong>STAT3</strong> is mechanistically relevant but broad. Treat
+it as a pathway node requiring selectivity checks, not a clean target
+nomination.</li>
+<li><strong>TNF</strong> should demonstrate the value of counterscreens
+and specificity penalties: disease evidence can be strong while screen
+selectivity is poor.</li>
+</ul>
+<h2 id="sequential-improvement-plan">Sequential Improvement Plan</h2>
+<h3 id="v0.2---replace-example-tables-with-public-retrieval">v0.2 -
+Replace Example Tables With Public Retrieval</h3>
+<ul>
+<li>Implement PubChem PUG-REST retrieval for AID 2604 and AID 2546.</li>
+<li>Add ChEMBL API retrieval for RORC/IL-17 pathway assay context.</li>
+<li>Store raw downloads under a user-specified cache path, not in
+git.</li>
+<li>Record checksums and retrieval dates in provenance.</li>
+</ul>
+<h3 id="v0.3---real-disease-omics">v0.3 - Real Disease Omics</h3>
+<ul>
+<li>Import processed GSE54456 expression/count data.</li>
+<li>Add differential expression with a documented contrast.</li>
+<li>Add pathway enrichment for IL-17 signaling, cytokine signaling,
+keratinocyte activation, and Th17 differentiation.</li>
+<li>Add an independent validation dataset before expanding biological
+claims.</li>
+</ul>
+<h3 id="v0.4---proteomics-and-single-cell-context">v0.4 - Proteomics And
+Single-Cell Context</h3>
+<ul>
+<li>Import processed PXD021673 protein quantification tables.</li>
+<li>Add RNA/protein concordance flags.</li>
+<li>Import processed GSE162183 cell-type markers or pseudobulk
+summaries.</li>
+<li>Add a warning when a candidate is broadly expressed rather than
+cell-type enriched.</li>
+</ul>
+<h3 id="v0.5---protein-models-and-structure">v0.5 - Protein Models And
+Structure</h3>
+<ul>
+<li>Add real UniProt sequence retrieval.</li>
+<li>Add optional ESM-2 or ProtBERT embeddings with cached model
+metadata.</li>
+<li>Add AlphaFold DB lookup for candidate proteins.</li>
+<li>Keep ESMFold or heavier structure prediction optional and
+top-candidate-only.</li>
+</ul>
+<h3 id="v0.6---grounded-evidence-summary-mode">v0.6 - Grounded Evidence
+Summary Mode</h3>
+<ul>
+<li>Replace deterministic evidence-card templates with an optional
+reviewed model-backed summarizer.</li>
+<li>Require all summary sentences to cite workflow table IDs or
+accessions.</li>
+<li>Add a validation test that rejects evidence cards with missing
+citations.</li>
+<li>Keep deterministic template mode as the default for
+reproducibility.</li>
+</ul>
+<h2 id="staff-scientist-bar-for-the-next-version">Staff Scientist Bar
+For The Next Version</h2>
+<p>The next version should answer this review question:</p>
+<blockquote>
+<p>If I only had enough budget to validate two candidates, which two
+should I choose, what experiment should I run first, and what evidence
+would make me stop?</p>
+</blockquote>
+<p>The current demo begins to answer that by nominating IL17A and RORC
+for different reasons: IL17A as disease-biology aligned, RORC as
+screen-supported and pathway-proximal. The next version should make that
+tradeoff quantitative and explicit.</p>
+</body>
+</html>

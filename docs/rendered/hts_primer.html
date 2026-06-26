@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>HTS And qHTS Primer</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">HTS And qHTS Primer</h1>
+</header>
+<h1 id="hts-and-qhts-primer">HTS And qHTS Primer</h1>
+<p>High-throughput screening (HTS) tests many perturbations in a
+standardized assay. Quantitative HTS (qHTS) often tests multiple
+concentrations and can support dose-response interpretation.</p>
+<h2 id="why-it-matters-here">Why It Matters Here</h2>
+<p>This project uses public ROR gamma qHTS-style data as a
+pathway-proximal screening analog for Th17 / IL-17 biology.</p>
+<pre class="mermaid"><code>flowchart LR
+    A[&quot;Primary assay&quot;] --&gt; B[&quot;Activity score&quot;]
+    C[&quot;Counterscreen&quot;] --&gt; D[&quot;Artifact risk&quot;]
+    B --&gt; E[&quot;Screen QC score&quot;]
+    D --&gt; E
+    E --&gt; F[&quot;Candidate ranking&quot;]</code></pre>
+<h2 id="common-pitfalls">Common Pitfalls</h2>
+<ul>
+<li>A hit can reflect assay interference rather than biology.</li>
+<li>Counterscreens reduce false positives but do not eliminate all
+artifacts.</li>
+<li>A pathway-proximal screen is not the same as a direct target-binding
+assay.</li>
+<li>Strong activity without disease relevance may not be useful for
+discovery.</li>
+</ul>
+<h2 id="project-guardrail">Project Guardrail</h2>
+<p>ROR gamma qHTS is treated as screening evidence for upstream Th17
+biology, not as proof of direct IL-17 peptide modulation.</p>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Proteomics Primer</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Proteomics Primer</h1>
+</header>
+<h1 id="proteomics-primer">Proteomics Primer</h1>
+<p>Proteomics measures proteins more directly than RNA-seq. In LC-MS/MS
+experiments, proteins are digested into peptides, measured by mass
+spectrometry, and inferred back to protein-level abundance.</p>
+<pre class="mermaid"><code>flowchart LR
+    A[&quot;Tissue sample&quot;] --&gt; B[&quot;Protein extraction&quot;]
+    B --&gt; C[&quot;Peptide digestion&quot;]
+    C --&gt; D[&quot;LC-MS/MS&quot;]
+    D --&gt; E[&quot;Protein quantification&quot;]
+    E --&gt; F[&quot;Validation overlay&quot;]</code></pre>
+<h2 id="why-it-matters-here">Why It Matters Here</h2>
+<p>RNA evidence alone can over-prioritize genes whose protein products
+are not changed or detectable. Proteomics adds an orthogonal evidence
+layer.</p>
+<h2 id="common-pitfalls">Common Pitfalls</h2>
+<ul>
+<li>RNA and protein abundance are not always concordant.</li>
+<li>Low-abundance cytokines can be difficult to detect.</li>
+<li>Protein inference can be complicated by shared peptides and
+isoforms.</li>
+</ul>
+<h2 id="project-guardrail">Project Guardrail</h2>
+<p>Weak proteomics support is flagged rather than hidden, especially
+when RNA evidence is strong.</p>
+</body>
+</html>

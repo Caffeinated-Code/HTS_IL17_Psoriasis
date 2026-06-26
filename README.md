@@ -1,6 +1,6 @@
 # HTS_IL17_Psoriasis
 
-**A FAIR Nextflow workflow and Streamlit app for integrating public HTS/qHTS assay data, psoriasis omics, proteomics, protein AI model features, structural evidence, and grounded LLM summaries for target and hit prioritization.**
+**A FAIR Nextflow workflow and Streamlit app for integrating public HTS/qHTS assay data, psoriasis omics, proteomics, protein model features, structural evidence, and grounded evidence summaries for target and hit prioritization.**
 
 ## Links
 
@@ -8,7 +8,7 @@
 - **Published dashboard:** https://caffeinated-code.github.io/HTS_IL17_Psoriasis/
 - **Local Streamlit app:** `streamlit run app/streamlit_app.py`
 
-This is an employer-neutral portfolio project. It uses public or toy data only and makes conservative claims: the workflow is a screening-to-biology prioritization demo, not a clinical efficacy model.
+This is an employer-neutral portfolio project. It uses public data and compact example tables only and makes conservative claims: the workflow is a screening-to-biology prioritization workflow, not a clinical efficacy model.
 
 ## What This Project Demonstrates
 
@@ -17,6 +17,21 @@ This is an employer-neutral portfolio project. It uses public or toy data only a
 > If a pathway-proximal screening assay nominates compounds or targets around ROR gamma / Th17 biology, which candidates also have psoriasis disease evidence, proteomics support, cell-type context, and interpretable protein-level features?
 
 The project is intentionally transparent. It favors auditable scoring, provenance, and documented limitations over black-box ranking.
+
+## Follow The Project
+
+| Start here | Markdown | Browser-friendly HTML |
+| --- | --- | --- |
+| Analysis walkthrough | [docs/analysis_walkthrough.md](docs/analysis_walkthrough.md) | [analysis_walkthrough.html](docs/rendered/analysis_walkthrough.html) |
+| Project plan | [PROJECT_PLAN.md](PROJECT_PLAN.md) | [project_plan.html](docs/rendered/project_plan.html) |
+| Scientific review and roadmap | [DIRECTOR_REVIEW.md](DIRECTOR_REVIEW.md) | [director_review.html](docs/rendered/director_review.html) |
+| HTS/qHTS primer | [docs/hts_primer.md](docs/hts_primer.md) | [hts_primer.html](docs/rendered/hts_primer.html) |
+| IL-17 psoriasis primer | [docs/il17_psoriasis_primer.md](docs/il17_psoriasis_primer.md) | [il17_psoriasis_primer.html](docs/rendered/il17_psoriasis_primer.html) |
+| Proteomics primer | [docs/proteomics_primer.md](docs/proteomics_primer.md) | [proteomics_primer.html](docs/rendered/proteomics_primer.html) |
+| Protein language models primer | [docs/protein_language_models_primer.md](docs/protein_language_models_primer.md) | [protein_language_models_primer.html](docs/rendered/protein_language_models_primer.html) |
+| Structure prediction primer | [docs/structure_prediction_primer.md](docs/structure_prediction_primer.md) | [structure_prediction_primer.html](docs/rendered/structure_prediction_primer.html) |
+| Evidence summary primer | [docs/llm_evidence_primer.md](docs/llm_evidence_primer.md) | [llm_evidence_primer.html](docs/rendered/llm_evidence_primer.html) |
+| FAIR Nextflow and AWS primer | [docs/fair_nextflow_aws_primer.md](docs/fair_nextflow_aws_primer.md) | [fair_nextflow_aws_primer.html](docs/rendered/fair_nextflow_aws_primer.html) |
 
 ## Why Psoriasis And IL-17 Biology?
 
@@ -62,7 +77,7 @@ flowchart LR
     H --> M
     J --> M
     L --> M
-    M --> N["Grounded LLM evidence cards"]
+    M --> N["Grounded evidence cards"]
     N --> O["HTML report and Streamlit app"]
 ```
 
@@ -75,10 +90,10 @@ The dashboard and workflow should be read as a prioritization exercise, not an e
 3. Add psoriasis disease transcriptomics to check tissue relevance.
 4. Add proteomics to test whether RNA-supported candidates also have protein-level support.
 5. Add single-cell context to identify relevant immune or skin-cell compartments.
-6. Add protein AI and structure features as supporting interpretation layers.
+6. Add protein model and structure features as supporting interpretation layers.
 7. Generate grounded evidence cards that explain the ranking, limitations, and next experiment.
 
-Full walkthrough: [docs/analysis_walkthrough.md](docs/analysis_walkthrough.md).
+Full walkthrough: [docs/analysis_walkthrough.md](docs/analysis_walkthrough.md) or [HTML version](docs/rendered/analysis_walkthrough.html).
 
 ## Outputs
 
@@ -96,7 +111,7 @@ Full walkthrough: [docs/analysis_walkthrough.md](docs/analysis_walkthrough.md).
 
 ## Public Dataset Plan
 
-The demo ships with small cached toy tables shaped like the public sources below. Full retrieval modules are documented as future work.
+The demo ships with compact cached example tables shaped like the public sources below. Full retrieval modules are documented as future work.
 
 | Evidence layer | Public source | Why it is used |
 | --- | --- | --- |
@@ -112,16 +127,16 @@ The demo ships with small cached toy tables shaped like the public sources below
 - Public screening data are small-molecule assays, used here as an HTS data analog.
 - Protein language model features are descriptive unless validated in a predictive task.
 - AlphaFold or ESMFold confidence supports structural plausibility, not binding proof.
-- LLM summaries are grounded in workflow outputs and should never create unsupported biological claims.
+- Evidence summaries are grounded in workflow outputs and should never create unsupported biological claims.
 
 For a critical staff-scientist-style review and sequential improvement roadmap, see [DIRECTOR_REVIEW.md](DIRECTOR_REVIEW.md).
 
 ## Documentation Primers
 
-- [HTS primer](docs/hts_primer.md)
-- [IL-17 psoriasis primer](docs/il17_psoriasis_primer.md)
-- [Proteomics primer](docs/proteomics_primer.md)
-- [Protein language models primer](docs/protein_language_models_primer.md)
-- [Structure prediction primer](docs/structure_prediction_primer.md)
-- [LLM evidence primer](docs/llm_evidence_primer.md)
-- [FAIR Nextflow and AWS primer](docs/fair_nextflow_aws_primer.md)
+- [HTS primer](docs/hts_primer.md) / [HTML](docs/rendered/hts_primer.html)
+- [IL-17 psoriasis primer](docs/il17_psoriasis_primer.md) / [HTML](docs/rendered/il17_psoriasis_primer.html)
+- [Proteomics primer](docs/proteomics_primer.md) / [HTML](docs/rendered/proteomics_primer.html)
+- [Protein language models primer](docs/protein_language_models_primer.md) / [HTML](docs/rendered/protein_language_models_primer.html)
+- [Structure prediction primer](docs/structure_prediction_primer.md) / [HTML](docs/rendered/structure_prediction_primer.html)
+- [Evidence summary primer](docs/llm_evidence_primer.md) / [HTML](docs/rendered/llm_evidence_primer.html)
+- [FAIR Nextflow and AWS primer](docs/fair_nextflow_aws_primer.md) / [HTML](docs/rendered/fair_nextflow_aws_primer.html)

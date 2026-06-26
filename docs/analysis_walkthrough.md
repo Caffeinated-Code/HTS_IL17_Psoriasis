@@ -1,12 +1,12 @@
 # Analysis Walkthrough
 
-This walkthrough explains how to read the `HTS_IL17_Psoriasis` demo like a discovery scientist reviewing a screening-to-biology prioritization workflow.
+This walkthrough explains how to read the `HTS_IL17_Psoriasis` like a discovery scientist reviewing a screening-to-biology prioritization workflow.
 
 ## 1. Start With The Scientific Question
 
 The workflow asks:
 
-> Which psoriasis / IL-17 pathway candidates remain interesting after combining screening-style evidence, disease omics, proteomics, cell-type context, protein AI features, and structural plausibility?
+> Which psoriasis / IL-17 pathway candidates remain interesting after combining screening-style evidence, disease omics, proteomics, cell-type context, protein model features, and structural plausibility?
 
 This is not designed to prove efficacy. It is designed to prioritize what deserves the next experiment.
 
@@ -19,7 +19,7 @@ The key distinction:
 - **Supported claim:** this is a useful public screening-data analog for upstream Th17 biology.
 - **Unsupported claim:** this is a direct IL-17 peptide screen.
 
-That is why the dashboard includes a caveat. It is not meant to weaken the project; it shows scientific judgment.
+That is why the dashboard includes an interpretation note. It is not meant to weaken the project; it shows scientific judgment.
 
 ## 3. Apply Counterscreen Logic
 
@@ -30,7 +30,7 @@ The screen QC module combines:
 - selectivity
 - artifact flag
 
-Candidates with strong primary activity but poor counterscreen behavior are penalized. In the demo, TNF has disease relevance but is flagged for artifact risk, which prevents it from ranking too highly.
+Candidates with strong primary activity but poor counterscreen behavior are penalized. In this compact example, TNF has disease relevance but is flagged for artifact risk, which prevents it from ranking too highly.
 
 ## 4. Add Disease Transcriptomics
 
@@ -42,7 +42,7 @@ Strong disease RNA evidence helps prioritize candidates such as IL17A and IL23R 
 
 Proteomics asks whether the disease signal is visible at the protein level.
 
-This matters because RNA and protein signals can diverge. In the demo, RORC has strong screening support but weaker protein-level support, so it remains interesting but caveated.
+This matters because RNA and protein signals can diverge. In this compact example, RORC has strong screening support but weaker protein-level support, so it remains interesting but caveated.
 
 ## 6. Add Cell-Type Context
 
@@ -50,7 +50,7 @@ Single-cell context asks which cell populations carry the signal.
 
 For psoriasis / IL-17 biology, T-cell context supports Th17 relevance, while keratinocyte context supports downstream inflammatory skin response. Broad expression can be useful biologically but less specific for target prioritization.
 
-## 7. Add Protein AI And Structure Features
+## 7. Add Protein Model And Structure Features
 
 Protein language model features and structure confidence are included as contextual evidence.
 
@@ -66,7 +66,7 @@ The ranking is intentionally transparent:
 | Disease RNA | Is the candidate disease-relevant in psoriasis tissue? |
 | Proteomics | Is there protein-level support? |
 | Cell context | Is the signal in relevant cells? |
-| Protein AI | Does sequence/model context support interpretation? |
+| Protein model features | Does sequence/model context support interpretation? |
 | Structure | Is the protein structurally interpretable? |
 
 ## 9. Read The Top Candidates Like A Reviewer
@@ -79,7 +79,7 @@ Actionable next step: validate IL-17 pathway modulation in a psoriasis-relevant 
 
 ### RORC
 
-RORC ranks highly because the screening layer is strongest. It is upstream of IL-17 biology, but the proteomics support is weaker in the demo.
+RORC ranks highly because the screening layer is strongest. It is upstream of IL-17 biology, but the proteomics support is weaker in this compact example.
 
 Actionable next step: confirm ROR gamma pathway modulation and separate true pathway activity from transcriptional assay artifacts.
 
@@ -101,11 +101,11 @@ TNF is intentionally useful as a cautionary example: strong inflammatory relevan
 
 Actionable next step: run focused counterscreens and avoid over-prioritizing broad inflammatory nodes without specificity.
 
-## 10. What The LLM Layer Does
+## 10. What The Evidence Summary Layer Does
 
-The evidence-card module behaves like a grounded LLM/RAG summarizer. In this demo it uses deterministic templates, but the intended production behavior is:
+The evidence-card module behaves like a grounded evidence summarizer. In this version it uses deterministic templates, but the intended production behavior is:
 
-- only summarize workflow-generated evidence
+- only summarize workflow evidence
 - cite dataset accessions and output tables
 - separate evidence from hypothesis
 - suggest the next validation experiment
@@ -115,5 +115,4 @@ The evidence-card module behaves like a grounded LLM/RAG summarizer. In this dem
 
 A concise explanation:
 
-> This project demonstrates a FAIR screening-to-biology workflow. It starts with public qHTS-style assay evidence around ROR gamma / Th17 biology, then layers in psoriasis transcriptomics, proteomics, single-cell context, protein AI features, structure confidence, and grounded evidence summaries. The result is a transparent ranking that helps decide which candidates deserve follow-up experiments, while clearly stating limitations.
-
+> This project demonstrates a FAIR screening-to-biology workflow. It starts with public qHTS-style assay evidence around ROR gamma / Th17 biology, then layers in psoriasis transcriptomics, proteomics, single-cell context, protein model features, structure confidence, and grounded evidence summaries. The result is a transparent ranking that helps decide which candidates deserve follow-up experiments, while clearly stating limitations.
